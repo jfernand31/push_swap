@@ -6,7 +6,7 @@
 /*   By: jfernand <jfernand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 10:39:58 by jfernand          #+#    #+#             */
-/*   Updated: 2025/05/24 10:39:58 by jfernand         ###   ########.fr       */
+/*   Updated: 2025/05/24 22:00:27 by jfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,22 @@ int is_valid_number(char *str)
     return (1);
 }
 
-int ft_scan(int size, int *stack)
+int ft_scan(t_node *stack)
 {
-    int i;
-    int j;
+    t_node  *outer;
+    t_node  *inner;
 
-    i = 0;
-    while (i < (size - 1))
+    outer = stack;
+    while (outer)
     {
-        j = i + 1;
-        while (j < size)
+        inner = outer->next;
+        while (inner)
         {
-            if (stack[i] == stack[j])
+            if (outer->value == inner->value)
                 return (0);
-            j++;
+            inner = inner->next;
         }
-        i++;
+        outer = outer->next;
     }
     return (1);
 }
@@ -84,25 +84,23 @@ int ft_safe_atoi(char *str, int *result)
 int *parsing(int argc, char **argv)
 {
     int i;
-    int *stack;
+    int value;
+    t_node *stack;
+    t_node *new;
 
-    stack = (int *)malloc(sizeof(int) * (argc - 1));
-    if (!stack)
-        return (NULL);
+    stack = NULL;
     i = 1;
     while (i < argc)
     {
-        if (!is_valid_number(argv[i]) || !ft_safe_atoi(argv[i], &stack[i - 1]))
-        {
-            free(stack);
-            return (NULL);
-        }
+        if (!is_valid_and_convert(argv[i]) || !ft_safe_atoi(argv[i], &value))
+            return (ft_lstclear(&stack), NULL);
+        new = ft_lstnew(value);
+        if(!new)
+            return (ft_lstclear(&stack), NULL);
+        ft_lstadd_back(&stack, new);
         i++;
     }
-    if (!ft_scan(argc - 1, stack))
-    {
-        free(stack);
-        return (NULL);
-    }
+    if (!ft_scan(stack))
+            return (ft_lstclear(&stack), NULL);
     return (stack);
 }
