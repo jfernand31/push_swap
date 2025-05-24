@@ -12,34 +12,6 @@
 
 #include "includes/push_swap.h"
 
-int *parsing(int argc, char **argv)
-{
-    int i;
-    int *stack;
-
-    stack = (int *)malloc(sizeof(int) * (argc - 1));
-    if (!stack)
-        return (NULL);
-    i = 1;
-    while (i < argc)
-    {
-        if (!is_valid_number(argv[i]))
-        {
-            free(stack);
-            return (NULL);
-        }
-        if (!ft_atoi(argv[i], &stack[i -1 ])
-        {
-            free(stack);
-            return (NULL);
-        }
-        i++;
-    }
-    if (!ft_scan(argc, stack))
-        return (NULL);
-    return (stack);
-}
-
 int is_valid_number(char *str)
 {
     int i;
@@ -60,16 +32,16 @@ int is_valid_number(char *str)
     return (1);
 }
 
-int ft_scan(int argc, int *stack)
+int ft_scan(int size, int *stack)
 {
     int i;
     int j;
 
     i = 0;
-    while (i < (argc - 2))
+    while (i < (size - 1))
     {
         j = i + 1;
-        while (j < argc - 1)
+        while (j < size)
         {
             if (stack[i] == stack[j])
                 return (0);
@@ -84,7 +56,7 @@ int ft_safe_atoi(char *str, int *result)
 {
     int i;
     int is_neg;
-    int number;
+    long number;
 
     is_neg = 1;
     i = 0;
@@ -107,4 +79,30 @@ int ft_safe_atoi(char *str, int *result)
         return 0;
     *result = number * is_neg;
     return (1);
+}
+
+int *parsing(int argc, char **argv)
+{
+    int i;
+    int *stack;
+
+    stack = (int *)malloc(sizeof(int) * (argc - 1));
+    if (!stack)
+        return (NULL);
+    i = 1;
+    while (i < argc)
+    {
+        if (!is_valid_number(argv[i]) || !ft_safe_atoi(argv[i], &stack[i - 1]))
+        {
+            free(stack);
+            return (NULL);
+        }
+        i++;
+    }
+    if (!ft_scan(argc - 1, stack))
+    {
+        free(stack);
+        return (NULL);
+    }
+    return (stack);
 }
