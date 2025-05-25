@@ -81,7 +81,7 @@ int ft_safe_atoi(char *str, int *result)
     return (1);
 }
 
-int *parsing(int argc, char **argv)
+t_node *parsing(int argc, char **argv)
 {
     int i;
     int value;
@@ -92,7 +92,7 @@ int *parsing(int argc, char **argv)
     i = 1;
     while (i < argc)
     {
-        if (!is_valid_and_convert(argv[i]) || !ft_safe_atoi(argv[i], &value))
+        if (!is_valid_number(argv[i]) || !ft_safe_atoi(argv[i], &value))
             return (ft_lstclear(&stack), NULL);
         new = ft_lstnew(value);
         if(!new)

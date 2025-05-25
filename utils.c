@@ -45,8 +45,6 @@ void    ft_lstadd_back(t_node **lst, t_node *new)
     }
 }
 
-ft_lstrotate;
-
 t_node  *ft_lstnew(int value)
 {
     t_node *node;

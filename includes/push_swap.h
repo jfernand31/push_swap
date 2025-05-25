@@ -21,8 +21,9 @@ typedef struct s_node
     struct s_node   *next;
 } t_node;
 
-int    *parsing(int argc, char **argv);
+t_node  *parsing(int argc, char **argv);
 void    ft_lstclear(t_node **lst);
 t_node  *ft_lstnew(int value);
+void    ft_lstadd_back(t_node **lst, t_node *new);
 
 #endif
