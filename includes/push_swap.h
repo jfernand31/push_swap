@@ -14,16 +14,39 @@
 # define PUSH_SWAP_H
 # include <stdlib.h>
 # include <limits.h>
+# include <stdio.h>
 
 typedef struct s_node
 {
 	int				value;
+	int				index;
 	struct s_node	*next;
 }	t_node;
 
 t_node	*parsing(int argc, char **argv);
 void	ft_lstclear(t_node **lst);
 t_node	*ft_lstnew(int value);
+int		ft_lstsize(t_node **stack);
+int		is_sorted(t_node **stack);
+int		get_smallest(t_node **stack);
+int		get_case(int first, int second , int third);
+void	sort_four(t_node **stack_a, t_node **stack_b);
+void	sort_three(t_node **stack);
+void	sort_five(t_node **stack_a, t_node **stack_b);
 void	ft_lstadd_back(t_node **lst, t_node *new);
+void	assign_index(int *numbers, t_node **stack, int argc);
+void	sort_array(int *numbers, int argc);
+int		*get_array(t_node **stack, int argc);
+void	sa(t_node **stack_a);
+void	sb(t_node **stack_b);
+void	ss(t_node **stack_a, t_node **stack_b);
+void	pa(t_node **stack_b, t_node **stack_a);
+void	pb(t_node **stack_a, t_node **stack_b);
+void	ra(t_node **stack_a);
+void	rb(t_node **stack_b);
+void	rr(t_node **stack_a, t_node **stack_b);
+void	rra(t_node **stack_a);
+void	rrb(t_node **stack_b);
+void	rrr(t_node **stack_a, t_node **stack_b);
 
 #endif

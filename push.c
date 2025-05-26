@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfernand <jfernand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/24 10:35:52 by jfernand          #+#    #+#             */
-/*   Updated: 2025/05/24 10:35:52 by jfernand         ###   ########.fr       */
+/*   Created: 2025/05/26 16:13:52 by jfernand          #+#    #+#             */
+/*   Updated: 2025/05/26 16:13:52 by jfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 
-int	main(int argc, char **argv)
+static void	push(t_node **stack1, t_node **stack2)
 {
-	t_node	*stack_a;
-	t_node	*temp;
-	t_node	*next;
-	t_node	*stack_b;
+	t_node	*pushed;
 
-	if (argc < 2)
-		return (0);
-	stack_a = parsing(argc, argv);
-	stack_b = NULL;
-	if (is_sorted(&stack_a))
-		return (0);
-	if (argc == 4)
-		sort_three(&stack_a);
-	if (argc == 5)
-		sort_four(&stack_a, &stack_b);
-	if (argc == 6)
-		sort_five(&stack_a, &stack_b);
-	return (0);
+	if (!stack1 || !*stack1)
+		return ;
+	pushed = *stack1;
+	*stack1 = pushed->next;
+	pushed->next = *stack2;
+	*stack2 = pushed;
+}
+
+void	pa(t_node **stack_b, t_node **stack_a)
+{
+	push(stack_b, stack_a);
+	printf("%s\n", "pa");
+}
+
+void	pb(t_node **stack_a, t_node **stack_b)
+{
+	push(stack_a, stack_b);
+	printf("%s\n", "pb");
 }

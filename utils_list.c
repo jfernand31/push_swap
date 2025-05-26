@@ -56,3 +56,4 @@ t_node	*ft_lstnew(int value)
 	node->next = NULL;
 	return (node);
 }
+

@@ -74,10 +74,10 @@ int	ft_safe_atoi(char *str, int *result)
 			return (0);
 		number = number * 10 + (str[i++] - '0');
 	}
-	if ((is_neg == 1 && number > INT_MAX)
-		|| (is_neg == -1 && number > (long)INT_MAX + 1))
+	number *= is_neg;
+	if (number < INT_MIN || number > INT_MAX)
 		return (0);
-	*result = number * is_neg;
+	*result = (int)number;
 	return (1);
 }
 
