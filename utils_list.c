@@ -57,3 +57,17 @@ t_node	*ft_lstnew(int value)
 	return (node);
 }
 
+int	ft_lstsize(t_node **stack)
+{
+	int		i;
+	t_node	*temp;
+
+	i = 0;
+	temp = *stack;
+	while (temp != NULL)
+	{
+		i++;
+		temp = temp ->next;
+	}
+	return (i);
+}

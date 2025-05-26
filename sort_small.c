@@ -68,20 +68,6 @@ void	sort_four(t_node **stack_a, t_node **stack_b)
 	pa(stack_b, stack_a);
 }
 
-static void	bring_to_top(t_node **stack, int index)
-{
-	if (index <= 2)
-	{
-		while (index-- > 0)
-			ra(stack);
-	}
-	else
-	{
-		index = 5 - index;
-		while (index-- > 0)
-			rra(stack);
-	}
-}
 void	sort_five(t_node **stack_a, t_node **stack_b)
 {
 	int	index;

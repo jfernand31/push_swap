@@ -40,3 +40,4 @@ void	sort_big(t_node **stack_a, t_node **stack_b, int argc)
 		i++;
 	}
 }
+

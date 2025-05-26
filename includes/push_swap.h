@@ -23,16 +23,20 @@ typedef struct s_node
 	struct s_node	*next;
 }	t_node;
 
-t_node	*parsing(int argc, char **argv);
+char	**ft_split(char const *s, char c);
+t_node	*parsing(int argc, char **argv, int start);
 void	ft_lstclear(t_node **lst);
 t_node	*ft_lstnew(int value);
 int		ft_lstsize(t_node **stack);
 int		is_sorted(t_node **stack);
 int		get_smallest(t_node **stack);
 int		get_case(int first, int second , int third);
+void	bring_to_top(t_node **stack, int index);
+int		find_max_position(t_node **stack);
 void	sort_four(t_node **stack_a, t_node **stack_b);
 void	sort_three(t_node **stack);
 void	sort_five(t_node **stack_a, t_node **stack_b);
+void	sort_big(t_node **stack_a, t_node **stack_b, int argc);
 void	ft_lstadd_back(t_node **lst, t_node *new);
 void	assign_index(int *numbers, t_node **stack, int argc);
 void	sort_array(int *numbers, int argc);
