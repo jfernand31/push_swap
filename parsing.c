@@ -6,7 +6,7 @@
 /*   By: jfernand <jfernand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 10:39:58 by jfernand          #+#    #+#             */
-/*   Updated: 2025/05/24 22:00:27 by jfernand         ###   ########.fr       */
+/*   Updated: 2025/05/27 17:47:56 by jfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ int	is_valid_number(char *str)
 		i++;
 	if (!(str[i] >= '0' && str[i] <= '9'))
 	{
-		printf("Error\n");
+		ft_printf("Error\n");
 		return (0);
 	}
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
 		{
-			printf("Error\n");
+			ft_printf("Error\n");
 			return (0);
 		}
 		i++;
@@ -99,10 +99,10 @@ t_node	*parsing(int argc, char **argv, int start)
 	{
 		if (!is_valid_number(argv[i]) || !ft_safe_atoi(argv[i], &value))
 			return (ft_lstclear(&stack), NULL);
-		new = ft_lstnew(value);
+		new = ft_newlst(value);
 		if (!new)
 			return (ft_lstclear(&stack), NULL);
-		ft_lstadd_back(&stack, new);
+		lst_add_to_back(&stack, new);
 		i++;
 	}
 	if (!ft_scan(stack))

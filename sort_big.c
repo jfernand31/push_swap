@@ -6,7 +6,7 @@
 /*   By: jfernand <jfernand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 18:57:45 by jfernand          #+#    #+#             */
-/*   Updated: 2025/05/26 18:57:45 by jfernand         ###   ########.fr       */
+/*   Updated: 2025/05/27 17:52:51 by jfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	sort_big(t_node **stack_a, t_node **stack_b, int argc)
 	int max_bits;
 	int	i;
 	int	count;
-	t_node	*temp;
 
 	max_index = argc - 2;
 	max_bits = 0;
@@ -27,7 +26,7 @@ void	sort_big(t_node **stack_a, t_node **stack_b, int argc)
 	i = 0;
 	while (i < (max_bits))
 	{
-		count = ft_lstsize(stack_a);
+		count = lst_size(stack_a);
 		while (count--)
 		{
 			if (((*stack_a)->index & (1 << i)) == 0)
@@ -35,7 +34,7 @@ void	sort_big(t_node **stack_a, t_node **stack_b, int argc)
 			else
 				ra(stack_a);
 		}
-		while (ft_lstsize(stack_b) > 0)
+		while (lst_size(stack_b) > 0)
 			pa(stack_b, stack_a);
 		i++;
 	}

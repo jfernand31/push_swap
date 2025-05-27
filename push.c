@@ -6,7 +6,7 @@
 /*   By: jfernand <jfernand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 16:13:52 by jfernand          #+#    #+#             */
-/*   Updated: 2025/05/26 16:13:52 by jfernand         ###   ########.fr       */
+/*   Updated: 2025/05/27 17:35:25 by jfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ static void	push(t_node **stack1, t_node **stack2)
 void	pa(t_node **stack_b, t_node **stack_a)
 {
 	push(stack_b, stack_a);
-	printf("%s\n", "pa");
+	ft_printf("%s\n", "pa");
 }
 
 void	pb(t_node **stack_a, t_node **stack_b)
 {
 	push(stack_a, stack_b);
-	printf("%s\n", "pb");
+	ft_printf("%s\n", "pb");
 }

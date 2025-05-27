@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_others.c                                     :+:      :+:    :+:   */
+/*   utils_sort_small.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfernand <jfernand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 17:52:35 by jfernand          #+#    #+#             */
-/*   Updated: 2025/05/26 17:52:35 by jfernand         ###   ########.fr       */
+/*   Updated: 2025/05/27 18:01:25 by jfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	get_case(int first, int second , int third)
 		return (4);
 	else if (first > second && second > third)
 		return (5);
+    else
+        return (6);
 }
 
 int	get_smallest(t_node **stack)

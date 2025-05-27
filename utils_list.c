@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfernand <jfernand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 21:07:40 by jfernand          #+#    #+#             */
-/*   Updated: 2025/05/24 21:36:13 by jfernand         ###   ########.fr       */
+/*   Updated: 2025/05/27 17:50:34 by jfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_lstclear(t_node **lst)
 	*lst = NULL;
 }
 
-void	ft_lstadd_back(t_node **lst, t_node *new)
+void	lst_add_to_back(t_node **lst, t_node *new)
 {
 	t_node	*temp;
 
@@ -45,7 +45,7 @@ void	ft_lstadd_back(t_node **lst, t_node *new)
 	}
 }
 
-t_node	*ft_lstnew(int value)
+t_node	*ft_newlst(int value)
 {
 	t_node	*node;
 
@@ -57,7 +57,7 @@ t_node	*ft_lstnew(int value)
 	return (node);
 }
 
-int	ft_lstsize(t_node **stack)
+int	lst_size(t_node **stack)
 {
 	int		i;
 	t_node	*temp;

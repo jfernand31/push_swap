@@ -6,41 +6,30 @@
 #    By: jfernand <jfernand@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/02 19:45:19 by jfernand          #+#    #+#              #
-#    Updated: 2025/05/27 17:36:38 by jfernand         ###   ########.fr        #
+#    Updated: 2025/04/22 11:45:28 by jfernand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Name of the project
-NAME= push_swap
+NAME=get_new_line.a
 
 # Object files
-CFILES= ./push_swap.c \
-		./parsing.c   \
-		./push.c      \
-		./swap.c      \
-		./sort_small.c  \
-		./sort_big.c    \
-		./rotate.c      \
-		./reverse_rotate.c  \
-		./utils_sort_small.c  \
-		./utils_sort_big.c    \
-		./utils_list.c        \
+CFILES= ./get_next_line.c        \
+		./get_next_line_utils.c  \
 
 # .h files
-HFILES= ./includes/push_swap.h \
-
-# Libft files
-LIBFT= ./libft
-LIBFT_A= $(LIBFT)/libft.a
+HFILES= ./get_new_line.h       \
+		./get_new_line_bonus.h \
 
 # .c bonus files
-#BFILES= 
+BFILES= ./get_next_line_bonus.c       \
+		./get_next_line_utils_bonus.c \
 
 # Object files
 OFILES= $(CFILES:.c=.o)
 
 # Bonus object files
-#BOFILES= $(BFILES:.c=.o)
+BOFILES= $(BFILES:.c=.o)
 
 # Compiler
 CC=@cc
@@ -49,9 +38,9 @@ CC=@cc
 CCFLAGS=-Wall      \
         -Wextra    \
         -Werror    \
-		-g         \
-		-I.        \
-		-I$(MINILIBX) \
+
+# Command used to archive target
+AR= @ar -rcs
 
 # Command used to clean target
 RM = rm -rf
@@ -61,29 +50,29 @@ RM = rm -rf
 #
 all: $(NAME)
 
-$(NAME): $(LIBFT_A) $(MINILIBX_A) $(OFILES) 
+$(NAME): $(OFILES) 
 	@ echo 'Building binary: $@'
-	$(CC) $(CCFLAGS) $(OFILES) $(LIBFT_A) -o $@
+	$(AR) $@ $^
 	@ echo 'Finished building binary: $@'
+
+bonus: $(OFILES) $(BOFILES)
+	@ echo 'Building Bonus binary: $(NAME)'
+	$(AR) $(NAME) $(OFILES) $(BOFILES)
+	@ echo 'Finished building Bonus binary: $(NAME)'
 
 $(OFILES): %.o:%.c
 	@ echo 'Building target: $@'
 	@ $(CC) $(CCFLAGS) -c $< -o $@
 
-$(LIBFT_A):
-	$(MAKE) -C $(LIBFT)
-
 clean:
-	@ $(RM) $(OFILES)
-	@ $(MAKE) -C $(LIBFT) clean
+	@ $(RM) $(OFILES) $(BOFILES)
 
 fclean: clean
 	@ $(RM) $(NAME)
-	@ $(MAKE) -C $(LIBFT) fclean
 
 re: fclean all
 
-.PHONY= all clean fclean re 
+.PHONY= all clean fclean re bonus
 
 
 
