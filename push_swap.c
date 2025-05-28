@@ -30,8 +30,11 @@ t_node *split_args(int *argc, char **argv)
     int i;
 
     split_args = ft_split(argv[1], ' ');
-    if (!split_args)
-        return (NULL);
+    if (!split_args || !split_args[0])
+    {
+		write(2, "Error\n", 6);
+		return (NULL);
+	}
     *argc = 0;
     while (split_args[*argc])
         (*argc)++;
@@ -63,26 +66,31 @@ void	push_swap(int argc, t_node **stack_a, t_node **stack_b)
 		free(array);
 	}
 }
+
 int	main(int argc, char **argv)
 {
 	t_node	*stack_a;
 	t_node	*stack_b;
+	int		arg_count;
 
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc < 2)
 		return (0);
 	if (argc == 2 && contains_space(argv[1]))
-		stack_a = split_args(&argc, argv);
-	else if (argc >= 2 && !contains_space(argv[1]))
-		stack_a = parsing(argc, argv, 1);
-	if (!stack_a)
 	{
-		ft_lstclear(&stack_a);
-		ft_lstclear(&stack_b);
-		return (1);
+		stack_a = split_args(&argc, argv);
+		if(!stack_a)
+			return(1);
 	}
-	push_swap(argc, &stack_a, &stack_b);
+	else if (argc >= 2 && !contains_space(argv[1]))
+	{
+		arg_count = argc - 1;
+		stack_a = parsing(argc, argv, 1);
+		if (!stack_a)
+			return (1);
+	}
+	push_swap(arg_count + 1, &stack_a, &stack_b);
 	ft_lstclear(&stack_a);
 	ft_lstclear(&stack_b);
 	return (0);

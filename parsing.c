@@ -23,15 +23,15 @@ int	is_valid_number(char *str)
 		i++;
 	if (!(str[i] >= '0' && str[i] <= '9'))
 	{
-		ft_printf("Error\n");
-		return (0);
+		write(2, "Error\n", 6);
+		return (-1);
 	}
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
 		{
-			ft_printf("Error\n");
-			return (0);
+			write(2, "Error\n", 6);
+			return (-1);
 		}
 		i++;
 	}
@@ -106,6 +106,10 @@ t_node	*parsing(int argc, char **argv, int start)
 		i++;
 	}
 	if (!ft_scan(stack))
-		return (ft_lstclear(&stack), NULL);
+	{
+		write(2, "Error\n", 6);
+		ft_lstclear(&stack);
+		return (NULL);
+	}
 	return (stack);
 }

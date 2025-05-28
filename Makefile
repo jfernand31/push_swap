@@ -18,7 +18,9 @@ CFILES= ./push_swap.c \
 		./parsing.c   \
 		./push.c      \
 		./swap.c      \
-		./sort_small.c  \
+		./sort_three.c  \
+		./sort_four.c   \
+		./sort_five.c   \
 		./sort_big.c    \
 		./rotate.c      \
 		./reverse_rotate.c  \
@@ -51,7 +53,7 @@ CCFLAGS=-Wall      \
         -Werror    \
 		-g         \
 		-I.        \
-		-I$(MINILIBX) \
+		-I$(LIBFT) \
 
 # Command used to clean target
 RM = rm -rf
@@ -61,7 +63,7 @@ RM = rm -rf
 #
 all: $(NAME)
 
-$(NAME): $(LIBFT_A) $(MINILIBX_A) $(OFILES) 
+$(NAME): $(LIBFT_A) $(OFILES) 
 	@ echo 'Building binary: $@'
 	$(CC) $(CCFLAGS) $(OFILES) $(LIBFT_A) -o $@
 	@ echo 'Finished building binary: $@'

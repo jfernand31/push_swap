@@ -53,6 +53,7 @@ t_node	*ft_newlst(int value)
 	if (!node)
 		return (NULL);
 	node->value = value;
+	node->index = -1; // Initialize index to 0
 	node->next = NULL;
 	return (node);
 }

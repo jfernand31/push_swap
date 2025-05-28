@@ -79,3 +79,29 @@ void	assign_index(int *numbers, t_node **stack, int argc)
 		i++;
 	}
 }
+
+int	get_biggest(t_node **stack)
+{
+	t_node	*temp;
+	int		number;
+	int		max_index;
+	int		current_index;
+
+	if (!stack || !*stack)
+		return (-1);
+	temp = *stack;
+	number = temp->value;
+	max_index = 0;
+	current_index = 0;
+	while (temp != NULL)
+	{
+		if (temp->value > number)
+		{
+			number = temp->value;
+			max_index = current_index;
+		}
+		temp = temp->next;
+		current_index++;
+	}
+	return (max_index);
+}

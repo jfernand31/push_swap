@@ -1,37 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   sort_four.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfernand <jfernand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/26 16:13:52 by jfernand          #+#    #+#             */
-/*   Updated: 2025/05/27 17:35:25 by jfernand         ###   ########.fr       */
+/*   Created: 2025/05/28 18:44:57 by jfernand          #+#    #+#             */
+/*   Updated: 2025/05/28 18:44:57 by jfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 
-static void	push(t_node **stack1, t_node **stack2)
+void	sort_four(t_node **stack_a, t_node **stack_b)
 {
-	t_node	*pushed;
+	int	index;
 
-	if (!stack1 || !*stack1)
+	if (is_sorted(stack_a))
 		return ;
-	pushed = *stack1;
-	*stack1 = pushed->next;
-	pushed->next = *stack2;
-	*stack2 = pushed;
-}
-
-void	pa(t_node **stack_b, t_node **stack_a)
-{
-	push(stack_b, stack_a);
-	ft_printf("%s\n", "pa");
-}
-
-void	pb(t_node **stack_a, t_node **stack_b)
-{
-	push(stack_a, stack_b);
-	ft_printf("%s\n", "pb");
+	index = get_smallest(stack_a);
+	if (index == 0)
+		pb(stack_a, stack_b);
+	else if (index == 1)
+	{
+		rra(stack_a);
+		pb(stack_a, stack_b);
+	}
+	else if (index == 2)
+	{
+		ra(stack_a);
+		ra(stack_a);
+		pb(stack_a, stack_b);
+	} 
+	else if (index == 3)
+	{
+		ra(stack_a);
+		pb(stack_a, stack_b);
+	}
+	sort_three(stack_a);
+	pa(stack_b, stack_a);
 }
