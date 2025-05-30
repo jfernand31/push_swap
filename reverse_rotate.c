@@ -25,6 +25,7 @@ static void	reverse_rotate(t_node **stack)
 	last = temp->next;
 	temp->next = NULL;
 	last->next = *stack;
+	*stack = last;
 }
 
 void	rra(t_node **stack_a)

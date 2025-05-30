@@ -12,15 +12,15 @@
 
 #include "includes/push_swap.h"
 
-int	is_sorted(t_node **stack)
+int	is_sorted(t_node *stack)
 {
 	t_node	*temp;
 
-	if (!stack || !*stack)
+	if (!stack)
 		return (1);
 
-	temp = *stack;
-	while (temp->next != NULL)
+	temp = stack;
+	while (temp && temp->next)
 	{
 		if (temp->value > temp->next->value)
 			return (0);
@@ -29,16 +29,16 @@ int	is_sorted(t_node **stack)
 	return (1);
 }
 
-int	get_smallest(t_node **stack)
+int	get_smallest(t_node *stack)
 {
 	t_node	*temp;
 	int		number;
 	int		min_index;
 	int		current_index;
 
-	if (!stack || !*stack)
+	if (!stack)
 		return (-1);
-	temp = *stack;
+	temp = stack;
 	number = temp->value;
 	min_index = 0;
 	current_index = 0;
