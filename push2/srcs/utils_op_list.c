@@ -6,7 +6,7 @@
 /*   By: jfernand <jfernand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 16:40:29 by jfernand          #+#    #+#             */
-/*   Updated: 2025/06/03 17:49:58 by jfernand         ###   ########.fr       */
+/*   Updated: 2025/06/03 20:12:09 by jfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	op_list_add(t_op_list *list, char *op_name)
 		return ;
 	new->name = ft_strdup(op_name);
 	new->next = NULL;
-	new->prev =list->tail;
+	new->prev = list->tail;
 	if (list->tail)
 		list->tail->next = new;
 	else
@@ -30,30 +30,29 @@ void	op_list_add(t_op_list *list, char *op_name)
 	list->size++;
 }
 
-void op_list_free(t_op_list *list)
+void	op_list_free(t_op_list *list)
 {
-    t_op *current;
-    t_op *next;
+	t_op	*current;
+	t_op	*next;
 
 	current = list->head;
-    while (current)
-    {
-        next = current->next;
-        free(current->name);
-        free(current);
-        current = next;
-    }
-
-    list->head = NULL;
-    list->tail = NULL;
-    list->size = 0;
+	while (current)
+	{
+		next = current->next;
+		free(current->name);
+		free(current);
+		current = next;
+	}
+	list->head = NULL;
+	list->tail = NULL;
+	list->size = 0;
 }
 
-void op_list_init(t_op_list *list)
+void	op_list_init(t_op_list *list)
 {
-    list->head = NULL;
-    list->tail = NULL;
-    list->size = 0;
+	list->head = NULL;
+	list->tail = NULL;
+	list->size = 0;
 }
 
 t_op	*new_op(char *name)
@@ -73,21 +72,17 @@ void	replace_two_with_one(t_op_list *list, t_op *a, t_op *b, t_op *new)
 {
 	new->prev = a->prev;
 	new->next = b->next;
-
 	if (a->prev)
 		a->prev->next = new;
 	else
 		list->head = new;
-
 	if (b->next)
 		b->next->prev = new;
 	else
 		list->tail = new;
-
 	free(a->name);
 	free(b->name);
 	free(a);
 	free(b);
-
 	list->size--;
 }

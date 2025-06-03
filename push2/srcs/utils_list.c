@@ -6,7 +6,7 @@
 /*   By: jfernand <jfernand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 08:32:40 by jfernand          #+#    #+#             */
-/*   Updated: 2025/06/03 17:50:25 by jfernand         ###   ########.fr       */
+/*   Updated: 2025/06/03 19:58:36 by jfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,9 @@ t_node	*new_node(int value)
 
 int	stack_size(t_node *lst)
 {
-	int	size = 0;
+	int	size;
 
+	size = 0;
 	while (lst)
 	{
 		size++;
@@ -71,23 +72,20 @@ void	stack_clear(t_node **lst)
 	}
 	*lst = NULL;
 }
+
 void	remove_two_nodes(t_op_list *list, t_op *a, t_op *b)
 {
 	if (a->prev)
 		a->prev->next = b->next;
 	else
 		list->head = b->next;
-
 	if (b->next)
 		b->next->prev = a->prev;
 	else
 		list->tail = a->prev;
-
 	free(a->name);
 	free(b->name);
 	free(a);
 	free(b);
-
 	list->size -= 2;
 }
-

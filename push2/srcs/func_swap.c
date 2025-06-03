@@ -6,7 +6,7 @@
 /*   By: jfernand <jfernand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 18:20:36 by jfernand          #+#    #+#             */
-/*   Updated: 2025/06/03 17:09:46 by jfernand         ###   ########.fr       */
+/*   Updated: 2025/06/03 20:08:26 by jfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	swap(t_node **st)
 	first = *st;
 	second = first->next;
 	first->next = second->next;
-	second->next =	first;
+	second->next = first;
 	*st = second;
 }
 

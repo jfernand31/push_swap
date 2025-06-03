@@ -6,7 +6,7 @@
 #    By: jfernand <jfernand@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/02 19:45:19 by jfernand          #+#    #+#              #
-#    Updated: 2025/06/03 18:03:42 by jfernand         ###   ########.fr        #
+#    Updated: 2025/06/03 20:03:44 by jfernand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ CFILES= \
 	srcs/utils_parsing.c    \
 	srcs/utils_more_list.c  \
 	srcs/utils_op_list.c    \
-	srcs/optimize_op.c
+	srcs/optimize_op.c      \
+	srcs/utils_sort_big.c
 
 # .h files
 HFILES= ./includes/push_swap.h \

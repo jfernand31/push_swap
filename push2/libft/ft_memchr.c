@@ -6,7 +6,7 @@
 /*   By: jfernand <jfernand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 19:56:07 by jfernand          #+#    #+#             */
-/*   Updated: 2025/04/14 16:39:51 by jfernand         ###   ########.fr       */
+/*   Updated: 2025/06/03 20:16:58 by jfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (NULL);
 }
-
 
 /*#include <stdio.h>
 int	main(void)

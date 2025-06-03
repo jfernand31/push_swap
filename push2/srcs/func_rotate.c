@@ -6,7 +6,7 @@
 /*   By: jfernand <jfernand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 18:02:10 by jfernand          #+#    #+#             */
-/*   Updated: 2025/06/03 17:08:11 by jfernand         ###   ########.fr       */
+/*   Updated: 2025/06/03 19:55:35 by jfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	rotate(t_node **st)
 	t_node	*temp;
 	t_node	*first;
 
-	if(!st || !(*st)->next)
+	if (!st || !(*st)->next)
 		return ;
 	first = *st;
 	*st = first->next;
