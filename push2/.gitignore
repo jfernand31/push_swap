@@ -1,0 +1,17 @@
+# Object files
+*.o
+
+# Executables
+push_swap
+checker
+
+# Backup files
+*~
+
+# Build directories (optional, if you have them)
+build/
+bin/
+
+# macOS-specific files
+.DS_Store
+
