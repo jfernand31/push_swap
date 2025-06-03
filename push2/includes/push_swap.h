@@ -6,7 +6,7 @@
 /*   By: jfernand <jfernand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 08:06:42 by jfernand          #+#    #+#             */
-/*   Updated: 2025/06/03 17:57:56 by jfernand         ###   ########.fr       */
+/*   Updated: 2025/06/03 20:02:36 by jfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,37 +33,36 @@ typedef struct s_op_list
 typedef struct s_node
 {
 	int				index;
-	int 			value;
+	int				value;
 	struct s_node	*next;
 }	t_node;
 
 int		ft_strcmp(const char *s1, const char *s2);
-
 void	stack_clear(t_node **lst);
 int		stack_size(t_node *lst);
 t_node	*new_node(int value);
 void	add_to_back(t_node **lst, t_node *new);
-
-void op_list_init(t_op_list *list);
-void op_list_free(t_op_list *list);
+void	op_list_init(t_op_list *list);
+void	op_list_free(t_op_list *list);
 void	op_list_add(t_op_list *list, char *op_name);
 void	remove_two_nodes(t_op_list *list, t_op *a, t_op *b);
 void	replace_two_with_one(t_op_list *list, t_op *a, t_op *b, t_op *new);
 t_op	*new_op(char *name);
 void	op_list_free(t_op_list *list);
-void 	print_ops(t_op_list *list);
-
+void	print_ops(t_op_list *list);
 t_node	*parsing(int size, char **argv);
 void	push_swap(t_node **a, t_node **b, int size, t_op_list *op_list);
-
-int 	is_sorted(t_node *stack);
+int		is_sorted(t_node *stack);
 void	sort_big(t_node **a, t_node **b, int size, t_op_list *op_list);
+int		find_next_in_chunk_pos(t_node **stack, int current_max);
+void	bring_to_top(t_node **stack, int index, int size, t_op_list *op_list);
+int		square_root(int size);
+int		find_max_pos(t_node **st);
 void	sort_three(t_node **a, t_op_list *op_list);
 void	sort_five(t_node **a, t_node **b, int size, t_op_list *op_list);
 void	sort_array(int *numbers, int size);
 int		*get_array(t_node **stack, int size);
 void	optimize_op(t_op_list *list);
-
 void	sa(t_node **a, t_op_list *op_list);
 void	sb(t_node **b, t_op_list *op_list);
 void	ss(t_node **a, t_node **b, t_op_list *op_list);

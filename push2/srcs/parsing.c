@@ -6,7 +6,7 @@
 /*   By: jfernand <jfernand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 08:11:10 by jfernand          #+#    #+#             */
-/*   Updated: 2025/05/31 08:11:10 by jfernand         ###   ########.fr       */
+/*   Updated: 2025/06/03 19:43:04 by jfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,13 @@ static int	is_duplicate(int size, char **argv)
 static int	has_invalid(char **str, int size)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 1;
 	while (i < size)
 	{
 		j = 0;
-		if (str[i][j] == '-'|| str[i][j] == '+')
+		if (str[i][j] == '-' || str[i][j] == '+')
 			j++;
 		if (!str[i][j])
 			return (1);
@@ -85,7 +85,7 @@ static int	has_invalid(char **str, int size)
 
 t_node	*parsing(int size, char **argv)
 {
-	int 	i;
+	int		i;
 	t_node	*stack;
 	t_node	*node;
 	int		value;
@@ -96,7 +96,7 @@ t_node	*parsing(int size, char **argv)
 	i = 1;
 	while (i < size)
 	{
-		if(!safe_atol(argv[i], &value))
+		if (!safe_atol(argv[i], &value))
 			return (stack_clear(&stack), NULL);
 		node = new_node(value);
 		if (!node)
