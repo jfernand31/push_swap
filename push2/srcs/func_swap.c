@@ -6,7 +6,7 @@
 /*   By: jfernand <jfernand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 18:20:36 by jfernand          #+#    #+#             */
-/*   Updated: 2025/06/01 18:20:36 by jfernand         ###   ########.fr       */
+/*   Updated: 2025/06/03 17:09:46 by jfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,21 @@ static void	swap(t_node **st)
 	*st = second;
 }
 
-void	sa(t_node **a)
+void	sa(t_node **a, t_op_list *op_list)
 {
 	swap(a);
-	ft_printf("sa\n");
+	op_list_add(op_list, "sa");
 }
 
-void	sb(t_node **b)
+void	sb(t_node **b, t_op_list *op_list)
 {
 	swap(b);
-	ft_printf("sb\n");
+	op_list_add(op_list, "sb");
 }
 
-void	ss(t_node **a, t_node **b)
+void	ss(t_node **a, t_node **b, t_op_list *op_list)
 {
 	swap(a);
 	swap(b);
-	ft_printf("ss\n");
+	op_list_add(op_list, "ss");
 }

@@ -6,7 +6,7 @@
 /*   By: jfernand <jfernand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 09:37:08 by jfernand          #+#    #+#             */
-/*   Updated: 2025/05/31 09:37:08 by jfernand         ###   ########.fr       */
+/*   Updated: 2025/06/03 17:59:35 by jfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,18 +81,18 @@ static void	assign_index(t_node **a, int *numbers, int size)
 }
 
 
-void	push_swap(t_node **a, t_node **b, int size)
+void	push_swap(t_node **a, t_node **b, int size, t_op_list *op_list)
 {
 	int *array;
 
 	if (is_sorted(*a))
 		return ;
 	if (size == 2)
-		sa(a);
+		sa(a, op_list);
 	else if (size == 3)
-		sort_three(a);
+		sort_three(a, op_list);
 	else if (size > 3 && size < 6)
-		sort_five(a, b, size);
+		sort_five(a, b, size, op_list);
 	else if (size > 5)
 	{
 		array = get_array(a, size);
@@ -100,7 +100,7 @@ void	push_swap(t_node **a, t_node **b, int size)
 			return ;
 		sort_array(array, size);
 		assign_index(a, array, size);
-		sort_big(a, b, size);
+		sort_big(a, b, size, op_list);
 		free(array);
 	}
 }

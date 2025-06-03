@@ -6,7 +6,7 @@
 /*   By: jfernand <jfernand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 14:57:29 by jfernand          #+#    #+#             */
-/*   Updated: 2025/06/02 14:57:29 by jfernand         ###   ########.fr       */
+/*   Updated: 2025/06/03 18:00:04 by jfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,18 +67,18 @@ int	find_max_pos(t_node **st)
 	return (max_pos);
 }
 
-void	bring_to_top(t_node **stack, int index, int total_size)
+void	bring_to_top(t_node **stack, int index, int total_size, t_op_list *op_list)
 {
 	if (index <= total_size / 2)
 	{
 		while (index-- > 0)
-			ra(stack);
+			ra(stack, op_list);
 	}
 	else
 	{
 		index = total_size - index;
 		while (index-- > 0)
-			rra(stack);
+			rra(stack, op_list);
 	}
 }
 
@@ -99,35 +99,37 @@ int	find_next_in_chunk_pos(t_node **stack, int current_max)
 	return (-1);
 }
 
-void	push_to_b(int size, t_node **a, t_node **b, int chunk_size)
+void	push_to_b(t_node **a, t_node **b, int chunk_size, t_op_list *op_list)
 {
 	int pushed;
 	int current_max;
 	int	pos;
+	int	size;
 
+	size = stack_size((*a));
 	pushed = 0;
 	current_max = chunk_size;
 	while (pushed < size)
 	{
 		if ((*a)->index <= current_max)
 		{
-			pb(a, b);
+			pb(a, b, op_list);
 			if ((*b)->index < current_max - (chunk_size / 2))
-				rb(b);
+				rb(b, op_list);
 			pushed++;
 		}
 		else 
 		{
 			pos = find_next_in_chunk_pos(a, current_max);
 			if (pos != -1)
-				bring_to_top(a, pos, stack_size((*a)));
+				bring_to_top(a, pos, stack_size((*a)), op_list);
 		}
 		if (pushed >= current_max)
 			current_max += chunk_size;
 	}
 }
 
-void	sort_and_push_to_a(t_node **a, t_node **b)
+void	sort_and_push_to_a(t_node **a, t_node **b, t_op_list *op_list)
 {
 	int	max_pos;
 	int	size;
@@ -139,26 +141,26 @@ void	sort_and_push_to_a(t_node **a, t_node **b)
 		if (max_pos <= size / 2)
 		{
 			while (max_pos-- > 0)
-				rb(b);
+				rb(b, op_list);
 		}
 		else
 		{
 			max_pos = size - max_pos;
 			while (max_pos-- > 0)
-				rrb(b);
+				rrb(b, op_list);
 		}
-		pa(b, a);
+		pa(b, a, op_list);
 	}
 	
 }
 
-void	sort_big(t_node **a, t_node **b, int size)
+void	sort_big(t_node **a, t_node **b, int size, t_op_list *op_list)
 {
-	int	chunk_size;
-	float	k;
-
+	int			chunk_size;
+	float		k;
+	
 	k = 2.15;
 	chunk_size = square_root(size) * k;
-	push_to_b(size, a, b, chunk_size);
-	sort_and_push_to_a(a, b);
+	push_to_b(a, b, chunk_size, op_list);
+	sort_and_push_to_a(a, b, op_list);
 }

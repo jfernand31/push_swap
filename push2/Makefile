@@ -6,7 +6,7 @@
 #    By: jfernand <jfernand@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/02 19:45:19 by jfernand          #+#    #+#              #
-#    Updated: 2025/05/27 17:36:38 by jfernand         ###   ########.fr        #
+#    Updated: 2025/06/03 18:03:42 by jfernand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,10 @@ CFILES= \
 	srcs/sort_five_or_less.c\
 	srcs/sort_three.c       \
 	srcs/utils_list.c       \
-	srcs/utils_parsing.c
+	srcs/utils_parsing.c    \
+	srcs/utils_more_list.c  \
+	srcs/utils_op_list.c    \
+	srcs/optimize_op.c
 
 # .h files
 HFILES= ./includes/push_swap.h \

@@ -6,7 +6,7 @@
 /*   By: jfernand <jfernand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 18:02:10 by jfernand          #+#    #+#             */
-/*   Updated: 2025/06/01 18:02:10 by jfernand         ###   ########.fr       */
+/*   Updated: 2025/06/03 17:08:11 by jfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,21 @@ static void	rotate(t_node **st)
 	first->next = NULL;
 }
 
-void	ra(t_node **a)
+void	ra(t_node **a, t_op_list *op_list)
 {
 	rotate(a);
-	ft_printf("ra\n");
+	op_list_add(op_list, "ra");
 }
 
-void	rb(t_node **b)
+void	rb(t_node **b, t_op_list *op_list)
 {
 	rotate(b);
-	ft_printf("rb\n");
+	op_list_add(op_list, "rb");
 }
 
-void	rr(t_node **a, t_node **b)
+void	rr(t_node **a, t_node **b, t_op_list *op_list)
 {
 	rotate(a);
 	rotate(b);
-	ft_printf("rr\n");
+	op_list_add(op_list, "rr");
 }
