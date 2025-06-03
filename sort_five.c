@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_small.c                                       :+:      :+:    :+:   */
+/*   sort_five.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfernand <jfernand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -16,11 +16,15 @@ void	sort_five(t_node **stack_a, t_node **stack_b)
 {
 	int	index;
 
-	if (is_sorted(stack_a))
+	if (is_sorted(*stack_a))
 		return ;
-	index = get_smallest(stack_a);
+	index = get_smallest(*stack_a);
 	bring_to_top(stack_a, index, lst_size(stack_a));
 	pb (stack_a, stack_b);
-	sort_four(stack_a, stack_b);
+	index = get_smallest(*stack_a);
+	bring_to_top(stack_a, index, lst_size(stack_a));
+	pb (stack_a, stack_b);
+	sort_three(stack_a);
+	pa(stack_b, stack_a);
 	pa(stack_b, stack_a);
 }

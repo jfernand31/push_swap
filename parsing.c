@@ -21,6 +21,11 @@ int	is_valid_number(char *str)
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
+	if (str[i] == '\0')
+	{
+		write(2, "Error\n", 6);
+		return (-1);
+	}
 	if (!(str[i] >= '0' && str[i] <= '9'))
 	{
 		write(2, "Error\n", 6);
@@ -75,18 +80,17 @@ int	ft_safe_atoi(char *str, int *result)
 			is_neg = -1;
 	}
 	while (str[i] >= '0' && str[i] <= '9')
-	{
-		if (number > (INT_MAX - (str[i] - '0')) / 10)
-			return (0);
 		number = number * 10 + (str[i++] - '0');
-	}
 	if ((number * is_neg) < INT_MIN || (number * is_neg) > INT_MAX)
+	{
+		write(2, "Error\n", 6);
 		return (0);
+	}
 	*result = (int)(number * is_neg);
 	return (1);
 }
 
-t_node	*parsing(int argc, char **argv, int start)
+t_node	*parsing(int size, char **argv)
 {
 	int		i;
 	int		value;
@@ -94,8 +98,8 @@ t_node	*parsing(int argc, char **argv, int start)
 	t_node	*new;
 
 	stack = NULL;
-	i = start;
-	while (i < argc)
+	i = 1;
+	while (i < size)
 	{
 		if (!is_valid_number(argv[i]) || !ft_safe_atoi(argv[i], &value))
 			return (ft_lstclear(&stack), NULL);

@@ -27,7 +27,7 @@ static int	get_case(int first, int second , int third)
 	else if (first > second && second > third)
 		return (5);
     else
-        return (6);
+        return (-1);
 }
 
 static void	sort_case(t_node **stack, int case_num)
@@ -61,11 +61,11 @@ void	sort_three(t_node **stack)
 
 	if (!stack || !*stack || !(*stack)->next || !(*stack)->next->next)
 		return ;
+	if (is_sorted(*stack))
+		return ;
 	first = (*stack)->value;
 	second = (*stack)->next->value;
 	third = (*stack)->next->next->value;
 	case_num = get_case(first, second, third);
-	if (is_sorted(stack))
-		return ;
 	sort_case(stack, case_num);
 }

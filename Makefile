@@ -13,6 +13,9 @@
 # Name of the project
 NAME= push_swap
 
+# Name of the bonus
+BNAME= checker
+
 # Object files
 CFILES= ./push_swap.c \
 		./parsing.c   \
@@ -36,7 +39,11 @@ LIBFT= ./libft
 LIBFT_A= $(LIBFT)/libft.a
 
 # .c bonus files
-#BFILES= 
+BFILES= ./bonus/checker_bonus.c \
+		./bonus/parsing_bonus.c \
+		./bonus/push2_bonus.c   \
+		./bonus/reverse_rotate2_bonus.c \
+		./bonus/
 
 # Object files
 OFILES= $(CFILES:.c=.o)

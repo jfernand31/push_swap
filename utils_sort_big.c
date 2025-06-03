@@ -80,16 +80,16 @@ void	assign_index(int *numbers, t_node **stack, int argc)
 	}
 }
 
-int	get_biggest(t_node **stack)
+int	get_biggest(t_node *stack)
 {
 	t_node	*temp;
 	int		number;
 	int		max_index;
 	int		current_index;
 
-	if (!stack || !*stack)
+	if (!stack)
 		return (-1);
-	temp = *stack;
+	temp = stack;
 	number = temp->value;
 	max_index = 0;
 	current_index = 0;

@@ -24,14 +24,14 @@ typedef struct s_node
 }	t_node;
 
 
-t_node	*parsing(int argc, char **argv, int start);
+t_node	*parsing(int argc, char **argv);
 void    ft_lstclear(t_node **stack);
 t_node  *ft_newlst(int value);
 int     lst_size(t_node **stack);
 void    lst_add_to_back(t_node **lst, t_node *new);
-int		is_sorted(t_node **stack);
-int		get_smallest(t_node **stack);
-int		get_biggest(t_node **stack);
+int		is_sorted(t_node *stack);
+int		get_smallest(t_node *stack);
+int		get_biggest(t_node *stack);
 void	bring_to_top(t_node **stack, int index, int total_size);
 void	sort_four(t_node **stack_a, t_node **stack_b);
 void	sort_three(t_node **stack);
