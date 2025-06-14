@@ -35,6 +35,7 @@ int	main(int argc, char **argv)
 	push_swap(&stack_a, &stack_b, argc -1, &op_list);
 	optimize_op(&op_list);
 	print_ops(&op_list);
+	op_list_free(&op_list);
 	stack_clear(&stack_a);
 	stack_clear(&stack_b);
 	return (0);
